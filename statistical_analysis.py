@@ -102,8 +102,16 @@ def significance_table(results):
     return out
 
 
-def make_boxplot(df, path):
-    """Boxplot of relative frequency by population, split by response."""
+DEFAULT_TITLE = ("Relative cell frequency by miraclib response in PBMC samples "
+                 "among melanoma patients")
+
+
+def boxplot_figure(df, title=DEFAULT_TITLE):
+    """Boxplot of relative frequency by population, split by response.
+
+    Returns the figure rather than writing it, so the dashboard can render the
+    same chart for an arbitrary cohort that the pipeline writes to PNG.
+    """
     sns.set_theme(style="whitegrid")
     fig, ax = plt.subplots(figsize=(11, 6))
     sns.boxplot(data=df, x="population", y="percentage", hue="group",
@@ -111,9 +119,15 @@ def make_boxplot(df, path):
                 fliersize=2, ax=ax)
     ax.set_xlabel("Cell Type")
     ax.set_ylabel("Relative Frequency (%)")
-    ax.set_title("Relative cell frequency by miraclib response in PBMC samples among melanoma patients")
+    ax.set_title(title)
     ax.legend(title="")
     fig.tight_layout()
+    return fig
+
+
+def make_boxplot(df, path):
+    """Write the boxplot to path."""
+    fig = boxplot_figure(df)
     fig.savefig(path, dpi=150)
     plt.close(fig)
 
