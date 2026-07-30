@@ -1,0 +1,2 @@
+condition,sex,response,time_from_treatment_start,sample_type,treatment,n_samples,cell_type,mean_count
+melanoma,M,yes,0,all,all,485,b_cell,10206.15
