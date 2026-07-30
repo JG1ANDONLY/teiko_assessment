@@ -1,0 +1,6 @@
+population,median_diff,p_value,p_adjusted,rank_biserial,significant
+cd4_t_cell,0.387,0.0124,0.0621,0.113,False
+nk_cell,-0.22,0.127,0.317,-0.069,False
+b_cell,-0.173,0.346,0.432,-0.043,False
+monocyte,-0.482,0.264,0.432,-0.05,False
+cd8_t_cell,-0.113,0.622,0.622,-0.022,False
